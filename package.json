@@ -1,0 +1,24 @@
+{
+  "name": "test-table",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.1.6",
+    "faker": "^4.1.0",
+    "fixed-data-table-2": "^0.8.9",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-data-grid": "^3.0.10",
+    "react-data-grid-addons": "^3.0.10",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0",
+    "react-virtualized": "^9.18.0",
+    "reselect": "^3.0.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

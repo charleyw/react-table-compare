@@ -1,0 +1,13 @@
+.rowHeader {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.rowHeader .ReactVirtualized__Grid.ReactVirtualized__Table__Grid {
+  overflow: hidden!important;
+}
+
+.rowHeader .ReactVirtualized__Table__headerRow {
+  padding-right: 0!important;
+}
