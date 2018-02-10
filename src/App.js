@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Table from './AntDTable';
-import FixedDataTable from './ReactDatagrid';
+import FixedDataTable from './FixedRightColumnsExample';
 
 class App extends Component {
   render() {

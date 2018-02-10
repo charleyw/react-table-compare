@@ -3,9 +3,11 @@ import PropTypes from "prop-types";
 import faker from "faker/locale/zh_CN";
 
 import {Table, Column, Cell} from 'fixed-data-table-2'
+
 import {Selectors} from 'react-data-grid-addons/src/data'
 import 'fixed-data-table-2/dist/fixed-data-table.css';
 import createFakeData from './createFakeData';
+const FixedRightColumnsExample = require('fixed-data-table-2/examples/FixedRightColumnsExample')
 
 const [rows, columnNames] = createFakeData(100000, 100)
 
@@ -164,47 +166,7 @@ export default class Example extends React.Component {
     return (
       <div>
         <input type="text" onChange={e => this.handleFilterChange(e.target.value)}/>
-        <Table
-          rowsCount={this.getSize()}
-          onColumnResizeEndCallback={this.onColumnResizeEndCallback}
-          rowHeight={50}
-          headerHeight={50}
-          allowCellsRecycling
-          isColumnResizing={false}
-          width={window.innerWidth}
-          height={window.innerHeight - 100}>
-          <Column
-            fixed
-            header={<Cell>Id</Cell>}
-            cell={props => (
-              <Cell {...props}>
-                {props.rowIndex}
-              </Cell>
-            )}
-            width={40}
-          />
-          {columnNames.map(col => (
-            <Column
-              key={col}
-              columnKey={col}
-              allowCellsRecycling
-              isResizable
-              header={
-                <SortHeaderCell
-                  onSortChange={this._onSortChange}
-                  sortDir={colSortDirs[col]}>
-                  {col}
-                </SortHeaderCell>
-              }
-              cell={props => (
-                <Cell {...props}>
-                  {this.rowGetter(props.rowIndex)[col]}
-                </Cell>
-              )}
-              width={this.getColWidth(col)}
-            />
-          ))}
-        </Table>
+        <FixedRightColumnsExample/>
       </div>
     );
   }
