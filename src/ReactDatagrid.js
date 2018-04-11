@@ -1,24 +1,23 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
-import faker from "faker/locale/zh_CN";
 
 import ReactDataGrid from 'react-data-grid'
-import {Selectors} from 'react-data-grid-addons/src/data'
+import {Toolbar, Data} from 'react-data-grid-addons'
 import 'antd/dist/antd.css';
 import createFakeData from './createFakeData';
 
 const [rows, columnNames] = createFakeData(10000, 50)
 
 // const [rows, columnNames] = createFakeData(10000, 10)
+const { Selectors } = Data
 
 export default class Example extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this._columns = columnNames.map(name => ({
+    this._columns = columnNames.map((name, index) => ({
       name: name,
       key: name,
       filterable: true,
-      sortable: true
+      sortable: true,
     }))
     this.state = { rows: rows, filters: {}, sortColumn: null, sortDirection: null };
   }
@@ -77,7 +76,8 @@ export default class Example extends React.Component {
         columns={this._columns}
         rowGetter={this.rowGetter}
         rowsCount={this.getSize()}
-        toolbar={({onToggleFilter}) => <div onClick={onToggleFilter}>filter</div>}
+        enableRowSelect="multi"
+        toolbar={<Toolbar enableFilter={true}/>}
         minHeight={500}
         onAddFilter={this.handleFilterChange}
         onClearFilters={this.onClearFilters}

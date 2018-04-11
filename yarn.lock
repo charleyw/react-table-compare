@@ -5653,15 +5653,15 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-data-grid-addons@^3.0.10:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/react-data-grid-addons/-/react-data-grid-addons-3.0.10.tgz#62e48eb248cfabb210612cd4a7b1c8044e73726e"
+react-data-grid-addons@^3.0.11-next3652:
+  version "3.0.11-next3652"
+  resolved "https://registry.yarnpkg.com/react-data-grid-addons/-/react-data-grid-addons-3.0.11-next3652.tgz#92783f3df085fab116c42c1ba1e93587d9f60fe7"
   dependencies:
-    react-data-grid "^3.0.10"
+    react-data-grid "^3.0.11-next3652"
 
-react-data-grid@^3.0.10:
-  version "3.0.10"
-  resolved "https://registry.yarnpkg.com/react-data-grid/-/react-data-grid-3.0.10.tgz#ed7e883478732aaf57bbaca2640322f35f5f285c"
+react-data-grid@^3.0.11-next3652:
+  version "3.0.11-next3652"
+  resolved "https://registry.yarnpkg.com/react-data-grid/-/react-data-grid-3.0.11-next3652.tgz#ad836d8fc57a593bff8057364a1fe845a07a5d8e"
 
 react-dev-utils@^5.0.0:
   version "5.0.0"

@@ -25,8 +25,8 @@ export default class FixedRightColumnsExample extends React.Component {
         rowHeight={50}
         headerHeight={50}
         rowsCount={dataList.getSize()}
-        width={1000}
-        height={500}
+        width={window.innerWidth}
+        height={window.innerHeight}
         {...this.props}>
         <Column
           columnKey="avatar"

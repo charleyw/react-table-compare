@@ -3,11 +3,8 @@ import PropTypes from "prop-types";
 import faker from "faker/locale/zh_CN";
 
 import {Table, Column, Cell} from 'fixed-data-table-2'
-
-import {Selectors} from 'react-data-grid-addons/src/data'
 import 'fixed-data-table-2/dist/fixed-data-table.css';
 import createFakeData from './createFakeData';
-const FixedRightColumnsExample = require('fixed-data-table-2/examples/FixedRightColumnsExample')
 
 const [rows, columnNames] = createFakeData(100000, 100)
 
@@ -143,6 +140,24 @@ export default class Example extends React.Component {
     this.setState({ rows: newRows });
   };
 
+  handleSearch = (filter) => {
+    console.time('search')
+    const results = []
+    rows.forEach(row => {
+      this._columns.forEach(col => {
+        let rowValue = row[col.name];
+        if (rowValue !== undefined) {
+          if (rowValue.toString().toLowerCase().indexOf(filter) > -1) {
+            results.push({row, col: col.name})
+          }
+        }
+      })
+    })
+
+    console.timeEnd('search')
+    console.log(results)
+  };
+
   onClearFilters = () => {
     this.setState({ rows: rows });
   };
@@ -165,8 +180,48 @@ export default class Example extends React.Component {
     const {colSortDirs} = this.state
     return (
       <div>
-        <input type="text" onChange={e => this.handleFilterChange(e.target.value)}/>
-        <FixedRightColumnsExample/>
+        <input type="text" onChange={e => this.handleSearch(e.target.value)}/>
+        <Table
+          rowsCount={this.getSize()}
+          onColumnResizeEndCallback={this.onColumnResizeEndCallback}
+          rowHeight={50}
+          headerHeight={50}
+          allowCellsRecycling
+          isColumnResizing={false}
+          width={window.innerWidth}
+          height={window.innerHeight-100}>
+          <Column
+            fixed
+            header={<Cell>Id</Cell>}
+            cell={props => (
+              <Cell {...props}>
+                {props.rowIndex}
+              </Cell>
+            )}
+            width={40}
+          />
+          {columnNames.map(col => (
+            <Column
+              key={col}
+              columnKey={col}
+              allowCellsRecycling
+              isResizable
+              header={
+                <SortHeaderCell
+                  onSortChange={this._onSortChange}
+                  sortDir={colSortDirs[col]}>
+                  {col}
+                </SortHeaderCell>
+              }
+              cell={props => (
+                <Cell {...props}>
+                  {this.rowGetter(props.rowIndex)[col]}
+                </Cell>
+              )}
+              width={this.getColWidth(col)}
+            />
+          ))}
+        </Table>
       </div>
     );
   }
